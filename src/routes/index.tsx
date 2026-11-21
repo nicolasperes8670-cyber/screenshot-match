@@ -1,23 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-// The home route ships no og:image, so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Old Crown Barbearia | Barbearia em Porto Alegre desde 1985" },
+      { name: "description", content: "Corte clássico, barba na navalha e toalha quente na Old Crown Barbearia, em Porto Alegre. Tradição desde 1985. Agende pelo WhatsApp." },
+      { property: "og:title", content: "Old Crown Barbearia — Tradição desde 1985" },
+      { property: "og:description", content: "Seu corte. Seu tempo. Sua tradição. Conheça a Old Crown em Porto Alegre." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
+// The preview and downloadable HTML share one self-contained document.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <iframe className="standalone-page" src="/old-crown.html" title="Old Crown Barbearia — página completa" />
   );
 }

@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project architecture
+- Keep the self-contained landing page in `public/old-crown.html` and embed it from the TanStack index route; this keeps the requested single-file delivery identical to the working preview.
+- Define the standalone page's semantic design tokens inside its embedded stylesheet so the exported HTML needs no build tooling or external stylesheet.
